@@ -26,6 +26,7 @@ def create_app(**config_overrides):
                                              bind=engine))
     
     import registration.models
+    Base.metadata.drop_all(engine)
     Base.metadata.create_all(bind=engine)
     Base.query = db_session.query_property()
 
