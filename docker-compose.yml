@@ -13,6 +13,11 @@ services:
       - POSTGRES_PASSWORD=passwd
       - POSTGRES_DB=bambu
     container_name: bambu_db_1
-
+  db-test:
+    image: postgres
+    environment:
+      - POSTGRES_PASSWORD=passwd
+      - POSTGRES_DB=bambutest
+    container_name: bambu_db_2
 
     
