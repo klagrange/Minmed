@@ -2,7 +2,7 @@
 ### via docker-compose
 ```sh
 $ echo "SQLALCHEMY_DATABASE_URI = \"postgresql://postgres:passwd@bambu_db_1/bambu\"" > settings.py
-$ echo SQLALCHEMY_DATABASE_URI_TEST = "postgresql://postgres:passwd@bambu_db_2/bambutest" >> settings.py
+$ echo "SQLALCHEMY_DATABASE_URI_TEST = \"postgresql://postgres:passwd@bambu_db_2/bambutest\"" >> settings.py
 $ docker-compose up --build # docker-compose version 1.20.1, build 5d8c71b was tested
 ```
 
