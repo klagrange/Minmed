@@ -30,28 +30,12 @@ def create_app(**config_overrides):
     Base.query = db_session.query_property()
 
     # import blueprints
+    from registration.views import attach_db_session
+    registration_app = attach_db_session(db_session)
     from home.views import home_app
 
     # register blueprints
+    app.register_blueprint(registration_app)
     app.register_blueprint(home_app)
 
     return app
-
-if __name__ == "__main__":
-    app = create_app()
-    print(app.config)
-
-    from sqlalchemy import Column, Integer, String
-    class User(Base):
-        __tablename__ = 'users'
-   
-        id = Column(Integer, primary_key=True)
-        name = Column(String)
-        fullname = Column(String)
-        password = Column(String)
-
-        def __repr__(self):
-            return "<User(name='%s', fullname='%s', password='%s')>" % (
-                             self.name, self.fullname, self.password)
-
-    print(User.__table__)
