@@ -24,6 +24,10 @@ def create_app(**config_overrides):
     db_session = scoped_session(sessionmaker(autocommit=False,
                                              autoflush=False,
                                              bind=engine))
+    
+    import registration.models
+    Base.metadata.create_all(bind=engine)
+    Base.query = db_session.query_property()
 
     # import blueprints
     from home.views import home_app
