@@ -84,6 +84,5 @@ class ProfileLogicTest(unittest.TestCase):
         assert get_user_profile(4000, 10000) == "C"
         assert get_user_profile(10000, 0) == "A"
         
-
 if __name__ == '__main__':
     unittest.main()
