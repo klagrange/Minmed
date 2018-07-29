@@ -14,6 +14,7 @@ $ source ~/.minmedvenv/bin/activate
 
 # on the application directory
 $ pip install -r requirements.txt
+# create settings.py with JDBC URLs to postgres database (settings.py.example given as example) 
 $ python manage.py runserver
 ```
 
