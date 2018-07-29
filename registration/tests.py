@@ -8,6 +8,7 @@ from application import Base
 from application import create_app as create_app_base
 from settings import SQLALCHEMY_DATABASE_URI_TEST
 from registration.models import UserMaster, Access
+from registration.logic import get_user_profile
 
 class RegistrationTest(unittest.TestCase):
 
@@ -74,6 +75,15 @@ class RegistrationTest(unittest.TestCase):
         # register the same user
         rv = self.register(data=self.register_dict())
         assert rv.status_code == 400
+
+class ProfileLogicTest(unittest.TestCase):
+
+    def test_logic(self):
+        assert get_user_profile(0, 10000) == "D"
+        assert get_user_profile(2000, 10000) == "D"
+        assert get_user_profile(4000, 10000) == "C"
+        assert get_user_profile(10000, 0) == "A"
+        
 
 if __name__ == '__main__':
     unittest.main()
