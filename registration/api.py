@@ -24,6 +24,12 @@ class RegistrationAPI(MethodView):
         self._db_session = db_session
 
     def post(self):        
+        """
+        Register a new user
+        ---
+        tags:
+          - registration
+        """
         req = request.json
 
         # ensure correct schema
@@ -56,7 +62,7 @@ class RegistrationAPI(MethodView):
         self._db_session.add(user)
         self._db_session.commit()
 
-        return jsonify({"profile": get_user_profile(saving_amount, loan_amount)}), 200
+        return jsonify({"profile": get_user_profile(saving_amount, loan_amount)}), 201
 
 class AccessAPI(MethodView):
 
